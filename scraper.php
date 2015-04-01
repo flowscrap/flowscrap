@@ -3,11 +3,12 @@
 require 'scraperwiki.php';
 require 'scraperwiki/simple_html_dom.php';
 
-$html = scraperwiki::scrape("http://www.topannonces.fr/annonces-immobilier-u7.html?type=1");
+$html = scraperwiki::scrape("http://www.topannonces.fr/annonces-immobilier-u7.html");
 
 $dom = new simple_html_dom();
 $dom->load($html);
-$annonces = $dom->find("h3[class=classifiedTitre] a")->href;
+$annonces = $dom->find("#classifiedresults a.boldblue")->href;
+
 foreach ($annonces as $annonce) {
     $annonce_html = scraperwiki::scrape($annonce);
     $annonceDom = new simple_html_dom();
