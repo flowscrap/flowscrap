@@ -9,7 +9,7 @@ $dom = new simple_html_dom();
 $dom->load($html);
 $annonces = $dom->find("h3[class=classifiedTitre]");
 foreach ($annonces as $annonce) {
-    $annonce_html = scraperwiki::scrape($annonce->find("a")->href);
+    $annonce_html = scraperwiki::scrape($annonce->find("a")->getAttribute("href"));
     $annonceDom = new simple_html_dom();
     $annonceDom->load($annonce_html);
     $id =  $annonceDom->find("#ClassifiedId")->value;
