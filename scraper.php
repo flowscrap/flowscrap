@@ -7,10 +7,9 @@ $html = scraperwiki::scrape("http://www.topannonces.fr/annonces-immobilier-u7.ht
 
 $dom = new simple_html_dom();
 $dom->load($html);
-$annonces = $dom->find("h3[class=classifiedTitre]");
+$annonces = $dom->find("h3[class=classifiedTitre] a")->href;
 foreach ($annonces as $annonce) {
-    $url = $annonce->find("a[class=boldblue]")->href;
-    $annonce_html = scraperwiki::scrape($url);
+    $annonce_html = scraperwiki::scrape($annonce);
     $annonceDom = new simple_html_dom();
     $annonceDom->load($annonce_html);
     $id =  $annonceDom->find("#ClassifiedId")->value;
