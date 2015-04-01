@@ -21,7 +21,7 @@ for ($i=0; $i < 5; $i++){
         $phoneId = str_replace(')', '', $phoneId);
         $url = "http://www2.leboncoin.fr/ajapi/get/phone?list_id=". $phoneId;
         var_dump($url);
-        $jsonImg = scraperwiki::scrape($url);
+        $jsonImg = file_get_contents($url);
         var_dump($jsonImg);
         if ($jsonImg != '""') {
             $i = json_decode($jsonImg);
