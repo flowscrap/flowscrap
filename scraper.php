@@ -20,7 +20,7 @@ for ($i=0; $i < 5; $i++){
         $phoneId = str_replace('javascript:getPhoneNumber("http://www2.leboncoin.fr", ', '', $phoneLink->href);
         $phoneId = str_replace(')', '', $phoneId);
         var_dump($phoneId);
-        $url = "http://www2.leboncoin.fr/ajapi/get/phone?list_id=787818239";
+        $url = "http://www2.leboncoin.fr/ajapi/get/phone?list_id=". $phoneId;
         $jsonImg = scraperwiki::scrape($url);
         var_dump($jsonImg);
         if ($jsonImg != '""') {
