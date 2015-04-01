@@ -16,9 +16,10 @@ for ($i=0; $i < 5; $i++){
     $titre = $annonce_dom->find("#ad_subject", 0)->plaintext;
     $phoneLink = $annonce_dom->find("#phoneNumber a", 0);
     if ($phoneLink->href != "") {
-        var_dump($phoneLink->href);
+
         $phoneId = str_replace('javascript:getPhoneNumber("http://www2.leboncoin.fr", ', '', $phoneLink->href);
         $phoneId = str_replace(')', '', $phoneId);
+        var_dump($phoneId);
         $jsonImg = scraperwiki::scrape("http://www2.leboncoin.fr/ajapi/get/phone?list_id=". $phoneId ."");
         var_dump($jsonImg);
         if ($jsonImg != '""') {
