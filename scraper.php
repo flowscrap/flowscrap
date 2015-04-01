@@ -4,13 +4,12 @@ require 'scraperwiki.php';
 require 'scraperwiki/simple_html_dom.php';
 
 $html = scraperwiki::scrape("http://www.topannonces.fr/annonces-immobilier-u7.html?type=1");
-var_dump($html);
+
 $dom = new simple_html_dom();
 $dom->load($html);
-$annonces = $dom->find("div.marginbtm5 a");
-var_dump($annonces);
-for ($i=0; $i < 5; $i++){
-    $annonce_html = scraperwiki::scrape($annonces[$i]->href);
+$annonces = $dom->find("h3[class=classifiedTitre]");
+foreach ($annonces as $annonce) {
+    $annonce_html = scraperwiki::scrape($annonce->find("a")->href);
     $annonceDom = new simple_html_dom();
     $annonceDom->load($annonce_html);
     $id =  $annonceDom->find("#ClassifiedId")->value;
