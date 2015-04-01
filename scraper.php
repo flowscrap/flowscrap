@@ -4,7 +4,7 @@ require 'scraperwiki.php';
 require 'scraperwiki/simple_html_dom.php';
 
 $html = scraperwiki::scrape("http://www.topannonces.fr/annonces-immobilier-u7.html?type=1");
-
+var_dump($html);
 $dom = new simple_html_dom();
 $dom->load($html);
 $annonces = $dom->find("div.marginbtm5 a");
