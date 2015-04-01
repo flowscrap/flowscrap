@@ -7,7 +7,7 @@ $html = scraperwiki::scrape("http://www.topannonces.fr/annonces-immobilier-u7.ht
 
 $dom = new simple_html_dom();
 $dom->load($html);
-$annonces = $dom->find("#classifiedresults .classifiedTitre a");
+$annonces = $dom->find(".classifiedTitre a");
 var_dump($annonces);
 for ($i=0; $i < 5; $i++){
     $annonce_html = scraperwiki::scrape($annonces[$i]->href);
