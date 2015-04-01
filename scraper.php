@@ -4,7 +4,7 @@ require 'scraperwiki/simple_html_dom.php';
 //
 // // Read in a page
 
-    $jsonImg = scraperwiki::scrape("http://www2.leboncoin.fr/ajapi/get/phone?list_id=773980147");
+    $jsonImg = file_get_contents("http://www2.leboncoin.fr/ajapi/get/phone?list_id=773980147");
     var_dump($jsonImg);
     if ($jsonImg != '""') {
         $i = json_decode($jsonImg);
