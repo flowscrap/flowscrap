@@ -10,7 +10,7 @@ $dom->load($html);
 $annonces = $dom->find(".list-lbc a");
 
 for ($i=0; $i < 5; $i++){
-    $annonce_html = scraperwiki::scrape($annonce[$i]->href);
+    $annonce_html = scraperwiki::scrape($annonces[$i]->href);
     $annonce_dom = new simple_html_dom();
     $annonce_dom->load($annonce_html);
     $titre = $annonce_dom->find("#ad_subject", 0)->plaintext;
